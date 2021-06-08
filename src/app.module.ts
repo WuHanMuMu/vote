@@ -9,10 +9,10 @@ import * as Path from 'path';
 @Module({
   imports: [VoteModule, TypeOrmModule.forRoot({
     type: 'sqlite',
-    database: './data/db',
-    // autoLoadEntities: true,
+    database: './data/db.sqlite3',
     entities: [Path.join(__dirname, '**', '*.entity.{ts,js}')],
     synchronize: true,
+    logging: true,
   }), AuthModule],
   controllers: [AppController],
   providers: [AppService],

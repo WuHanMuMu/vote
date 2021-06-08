@@ -1,7 +1,7 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { VoteEntity } from './vote.entity';
-import { JoinColumn } from 'typeorm/browser';
+
 
 @Entity()
 export class VoteDetailEntity extends BaseEntity {
@@ -9,9 +9,9 @@ export class VoteDetailEntity extends BaseEntity {
   voteId: number;
   @Column()
   choiceDetail: string;
-  @Column()
+  @Column({ default: 0 })
   voteCount: number;
-  // @JoinColumn({ name: 'voteId' })
+  @JoinColumn({ name: 'voteId' })
   @ManyToOne(() => VoteEntity, vote => vote.details)
   vote: VoteEntity;
 }
