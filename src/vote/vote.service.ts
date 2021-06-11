@@ -6,6 +6,7 @@ import { VoteLogEntity } from '../entity/voteLog.entity';
 import { VoteDetailEntity } from '../entity/voteDetail.entity';
 import { createDetailDto, listOptionDto, updateVoteDto, voteDto, voteLogDto, voteLogListOtd } from './vote.dto';
 import { UserEntity } from '../entity/user.entity';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class VoteService {
@@ -14,6 +15,7 @@ export class VoteService {
               @InjectRepository(VoteDetailEntity) private VoteDetail: Repository<VoteDetailEntity>,
               @InjectRepository(UserEntity) private User: Repository<UserEntity>,
               private connection: Connection,
+              private eventEmitter: EventEmitter2,
   ) {
   }
 
@@ -117,6 +119,10 @@ export class VoteService {
     const count = await qb.getCount();
     const list = await qb.getRawMany();
     return { list, count };
+  }
+
+  async emit(voteId: number) {
+    this.eventEmitter.emit('mail.sendEveryOne', voteId);
   }
 }
 

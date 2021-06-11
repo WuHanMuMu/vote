@@ -140,6 +140,7 @@ export class VoteController {
   async stop(@Body() param: updateVoteDto) {
     param.status = 0;
     await this.service.updateVote(param);
+    await this.service.emit(param.voteId);
     return this.service.voteDetail(param.voteId);
   }
 

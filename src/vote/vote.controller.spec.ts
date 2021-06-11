@@ -61,9 +61,10 @@ describe('VoteController', () => {
       no: 'A12376(8)',
     });
     expect(user.id).toBeDefined();
+    userId = user.id;
   });
   it('投票', async function() {
-    let detail = await controller.vote({
+    const detail = await controller.vote({
       voteId: voteId,
       voteDetailId,
       userId,
