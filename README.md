@@ -8,10 +8,15 @@
 npm i --registry=https://registry.npm.taobao.org
 ```
 
-运行
+运行 需要安装 @nestjs/cli
 
 ```shell
-npm run start
+npm i -g @nestjs/cli
+npm run start 
+```
+或者 
+```shell
+npx @nestjs/cli start
 ```
 
 文档地址 项目运行之后 访问
