@@ -7,7 +7,6 @@ export class AuthService {
   }
 
   async validateUser(username: string, pass: string): Promise<any> {
-    console.log('=====>', username, pass);
     if (username == 'admin' && pass == '123456') {
       return { user: 'admin' };
     }

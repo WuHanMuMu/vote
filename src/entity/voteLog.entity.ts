@@ -6,7 +6,7 @@ export class VoteLogEntity extends BaseEntity {
   @Column()
   voteId: number;
   @Column()
-  choiceDetailId: number;
+  voteDetailId: number;
   @Column({
     comment: '投票用户id',
   })
